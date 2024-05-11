@@ -3,8 +3,8 @@ import numpy as np
 class Matrix:
   def __init__(self, matrix: list[list[int]]):
     self.matrix = np.array(matrix)
-    self.rows = len(matrix)
-    self.cols = len(matrix[0])
+    self.rows = len(self.matrix)
+    self.cols = len(self.matrix[0])
   
   def __multiply_lists(self, l1, l2):
     return sum([l1[i] * l2[i] for i in range(len(l1))])
