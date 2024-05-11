@@ -1,10 +1,12 @@
+import numpy as np
+
 class Matrix:
   def __init__(self, matrix: list[list[int]]):
-    self.matrix = matrix
+    self.matrix = np.array(matrix)
     self.rows = len(matrix)
     self.cols = len(matrix[0])
   
-  def __multiply_lists(self, l1: list, l2: list):
+  def __multiply_lists(self, l1, l2):
     return sum([l1[i] * l2[i] for i in range(len(l1))])
 
   def __get_col(self, matrix, index):
