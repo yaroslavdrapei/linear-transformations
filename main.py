@@ -1,7 +1,5 @@
 from LinearTransfomations import *
-from Vector import *
 from Visualization import *
-import matplotlib.pyplot as plt
 
 a = Vector([1, 2])
 
