@@ -15,8 +15,4 @@ vectors = [
 
 print(lt.shear(a, 2, Axis.x))
 
-Visualization.visualize(vectors, 8)
-
-"""
-todo: add colors to Visualization
-"""
+Visualization.visualize(vectors, 8, True)
