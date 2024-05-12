@@ -1,11 +1,5 @@
 from Vector import *
-from enum import Enum
-import math
-
-class Axis(Enum):
-  x = 0
-  y = 1
-  xy = 2
+from enums import Axis
 
 class LinearTransformations:
   @staticmethod
