@@ -18,6 +18,5 @@ print(lt.shear(a, 2, Axis.x))
 Visualization.visualize(vectors, 8)
 
 """
-todo: make 2 methods in Matrix static
 todo: add colors to Visualization
 """

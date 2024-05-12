@@ -6,10 +6,12 @@ class Matrix:
     self.rows = len(self.matrix)
     self.cols = len(self.matrix[0])
   
-  def __multiply_lists(self, l1, l2):
+  @staticmethod
+  def __multiply_lists(l1, l2):
     return sum([l1[i] * l2[i] for i in range(len(l1))])
-
-  def __get_col(self, matrix, index):
+  
+  @staticmethod
+  def __get_col(matrix, index):
     return [matrix[i][index] for i in range(len(matrix))]
   
   def __str__(self):
@@ -26,6 +28,6 @@ class Matrix:
     
     for i in range(self.rows):
       for j in range(other.cols):
-        result[i][j] = self.__multiply_lists(self.matrix[i], self.__get_col(other.matrix, j))
+        result[i][j] = Matrix.__multiply_lists(self.matrix[i], Matrix.__get_col(other.matrix, j))
     
     return Matrix(result)
