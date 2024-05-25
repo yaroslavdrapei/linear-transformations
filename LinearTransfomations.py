@@ -9,6 +9,15 @@ class LinearTransformations:
     result = vector * Matrix([[size, 0], [0, size]])
     return Vector(result.matrix)
   
+  def scale3d(vector: Vector, size: int):
+    result = vector * Matrix([
+      [size, 0, 0],
+      [0, size, 0],
+      [0, 0, size],
+    ])
+
+    return Vector(result.matrix)
+  
   @staticmethod
   def mirror(vector: Vector, axis: Axis) -> Vector:
     elementary_matrix = None
