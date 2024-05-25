@@ -2,7 +2,7 @@ from LinearTransfomations import LinearTransformations as lt
 from enums import *
 from Visualization import *
 
-a = Vector([2, 2])
+a = Vector([2, 2])  
 
 vectors = [
   a,
@@ -15,4 +15,12 @@ vectors = [
 
 print(lt.shear(a, 2, Axis.x))
 
-Visualization.visualize(vectors, 8, True)
+# Visualization.visualize(vectors, 8, True)
+
+vectors3d = [
+  Vector([3, 2, 4]),
+  Vector([4, 1, 0]),
+  Vector([6, 0, 0]),
+]
+
+Visualization.visualize3d(vectors3d, 6, True)
