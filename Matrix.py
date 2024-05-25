@@ -22,7 +22,7 @@ class Matrix:
 
   def __mul__(self, other):
     if (self.cols != other.rows):
-      raise Exception('Multiplication is impossible!')
+      raise Exception(f'Multiplication is impossible! {self.rows}x{self.cols} {other.rows}x{other.cols}')
     
     result = [[None for _ in range(other.cols)] for _ in range(self.rows)]
     

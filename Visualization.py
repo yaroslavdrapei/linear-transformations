@@ -38,5 +38,9 @@ class Visualization:
     ax.set_zlim(-size, size)
     ax.grid()
 
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+
     # Show the plot
     plt.show()
