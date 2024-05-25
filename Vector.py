@@ -9,3 +9,7 @@ class Vector(Matrix):
   def __getitem__(self, index):
     return self.vector[index]
   
+  def __mul__(self, other):
+    product = super().__mul__(other)
+    return Vector(product.matrix)
+  

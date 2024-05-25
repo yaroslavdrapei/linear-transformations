@@ -6,9 +6,9 @@ import math
 class LinearTransformations:
   @staticmethod
   def scale(vector: Vector, size: int) -> Vector:
-    result = vector * Matrix([[size, 0], [0, size]])
-    return Vector(result.matrix)
+    return vector * Matrix([[size, 0], [0, size]])
   
+  @staticmethod
   def scale3d(vector: Vector, size: int):
     result = vector * Matrix([
       [size, 0, 0],
@@ -16,7 +16,7 @@ class LinearTransformations:
       [0, 0, size],
     ])
 
-    return Vector(result.matrix)
+    return result
   
   @staticmethod
   def mirror(vector: Vector, axis: Axis) -> Vector:
@@ -28,8 +28,8 @@ class LinearTransformations:
         elementary_matrix = Matrix([[-1, 0], [0, 1]])
       case Axis.xy:
         elementary_matrix = Matrix([[-1, 0], [0, -1]])
-    result = vector * elementary_matrix
-    return Vector(result.matrix)
+
+    return vector * elementary_matrix
   
   @staticmethod
   def rotate(vector: Vector, degrees: int) -> Vector:
@@ -40,7 +40,7 @@ class LinearTransformations:
       [math.sin(radians), math.cos(radians)]
     ])
 
-    return Vector(result.matrix)
+    return result
   
   @staticmethod
   def shear(vector: Vector, shear: int, axis: Axis) -> Vector:
@@ -52,10 +52,9 @@ class LinearTransformations:
         elementary_matrix = Matrix([[1, shear], [0, 1]])
       case Axis.xy:
         elementary_matrix = Matrix([[1, shear], [shear, 1]])
-    result = vector * elementary_matrix
-    return Vector(result.matrix)
+
+    return vector * elementary_matrix
   
   @staticmethod
   def custom(vector: Vector, matrix: Matrix) -> Vector:
-    result = vector * matrix
-    return Vector(result.matrix)
+    return vector * matrix
