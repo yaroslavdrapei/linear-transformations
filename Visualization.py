@@ -5,7 +5,7 @@ import numpy as np
 class Visualization:
   colors = ['k', 'r', 'c', 'y', 'b', 'm', 'g']
   @staticmethod
-  def draw_plot(vectors: list[Vector], size: int, ax=None, color=False):
+  def draw_plot(vectors: list[Vector], size: int, ax, color=False):
     if not ax:
       fig = plt.figure()
       ax = fig.add_subplot()
@@ -24,9 +24,10 @@ class Visualization:
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
   @staticmethod
-  def draw_plot3d(vectors: list[Vector], size: int, color=False):
-    fig = plt.figure()
-    ax = fig.add_subplot(projection='3d')
+  def draw_plot3d(vectors: list[Vector], size: int, ax, color=False):
+    if not ax:
+      fig = plt.figure()
+      ax = fig.add_subplot(projection='3d')
 
     for i, vector in enumerate(vectors):
       ax.quiver(
@@ -45,15 +46,20 @@ class Visualization:
     ax.set_zlabel('Z')
 
   @staticmethod
-  def visualize(initial_vector: Vector, transformed_vectors: list[Vector]):
-    fig, axs = plt.subplots(2, 3)
-
-    axs = np.ndarray.flatten(axs) # got axes in one array, not 2 dimentional
+  def visualize(rows: int, cols: int, initial_vector: Vector, transformed_vectors: list[Vector], size: int):
+    fig = plt.figure()
   
-    for ax in axs:
-      if (len(transformed_vectors) == 0):
-        ax.axis('off') # clear unnecessary cells
-        continue
-      Visualization.draw_plot([initial_vector, transformed_vectors.pop(0)], 8, ax, True)
+    for i, vector in enumerate(transformed_vectors):
+      ax = fig.add_subplot(rows, cols, i+1)
+      Visualization.draw_plot([initial_vector, vector], size, ax, True)
+
+    plt.show()
+
+  def visualize3d(rows: int, cols: int, initial_vector: Vector, transformed_vectors: list[Vector], size: int):
+    fig = plt.figure()
+  
+    for i, vector in enumerate(transformed_vectors):
+      ax = fig.add_subplot(rows, cols, i+1, projection='3d')
+      Visualization.draw_plot3d([initial_vector, vector], size, ax, True)
 
     plt.show()
