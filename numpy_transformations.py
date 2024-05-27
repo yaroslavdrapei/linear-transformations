@@ -13,4 +13,7 @@ transformed_vectors = [
   np.dot(np.array([[1, 2], [0, 1]]), initial_vector) # shear
 ]
 
+for vector in transformed_vectors:
+  print(vector)
+
 V.visualize(2, 3, initial_vector, transformed_vectors, 8)

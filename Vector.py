@@ -9,6 +9,9 @@ class Vector(Matrix):
   def __getitem__(self, index):
     return self.vector[index]
   
+  def __str__(self):
+    return ' '.join([str(coord) for coord in self.vector])
+  
   def __mul__(self, other):
     product = super().__mul__(other)
     return Vector(product.matrix)

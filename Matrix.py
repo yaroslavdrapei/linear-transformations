@@ -30,6 +30,10 @@ class Matrix:
       for j in range(other.cols):
         result[i][j] = Matrix.__multiply_lists(self.matrix[i], Matrix.__get_col(other.matrix, j))
     
+    from Vector import Vector
+
+    if isinstance(other, Vector):
+      return Vector(result)
     return Matrix(result)
   
   # works only for vectors

@@ -18,4 +18,7 @@ transformed_vectors = [
   lt.rotate(customed, 90),
 ]
 
+for vector in transformed_vectors:
+  print(vector)
+
 V.visualize(1, 2, initial_vector, transformed_vectors, 4)

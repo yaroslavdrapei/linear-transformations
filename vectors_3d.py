@@ -10,4 +10,7 @@ transformed_vectors = [
   lt.mirror3d(initial_vector, Axis.z),
 ]
 
+for vector in transformed_vectors:
+  print(vector)
+
 V.visualize3d(1, 2, initial_vector, transformed_vectors, 12)

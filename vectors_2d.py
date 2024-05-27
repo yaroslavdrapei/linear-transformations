@@ -14,4 +14,7 @@ transformed_vectors = [
   lt.shear(initial_vector, 2, Axis.x),
 ]
 
+for vector in transformed_vectors:
+  print(vector)
+
 V.visualize(2, 3, initial_vector, transformed_vectors, 8)
