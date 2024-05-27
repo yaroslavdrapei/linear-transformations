@@ -31,3 +31,7 @@ class Matrix:
         result[i][j] = Matrix.__multiply_lists(self.matrix[i], Matrix.__get_col(other.matrix, j))
     
     return Matrix(result)
+  
+  # works only for vectors
+  def __getitem__(self, index):
+    return self.matrix[index][0]

@@ -3,7 +3,7 @@ import numpy as np
 
 class Vector(Matrix):
   def __init__(self, vector):
-    super().__init__(np.array([vector]))
+    super().__init__(np.array([[coord] for coord in vector]))
     self.vector = np.ndarray.flatten(np.array(vector))
 
   def __getitem__(self, index):

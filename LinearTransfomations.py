@@ -6,15 +6,15 @@ import math
 class LinearTransformations:
   @staticmethod
   def scale(vector: Vector, size: int) -> Vector:
-    return vector * Matrix([[size, 0], [0, size]])
+    return Matrix([[size, 0], [0, size]]) * vector
   
   @staticmethod
   def scale3d(vector: Vector, size: int):
-    result = vector * Matrix([
+    result = Matrix([
       [size, 0, 0],
       [0, size, 0],
       [0, 0, size],
-    ])
+    ]) * vector
 
     return result
   
@@ -29,7 +29,7 @@ class LinearTransformations:
       case Axis.all:
         elementary_matrix = Matrix([[-1, 0], [0, -1]])
 
-    return vector * elementary_matrix
+    return elementary_matrix * vector
   
   @staticmethod
   def mirror3d(vector: Vector, axis: Axis) -> Vector:
@@ -61,16 +61,16 @@ class LinearTransformations:
         ])
       
 
-    return vector * elementary_matrix
+    return elementary_matrix * vector
   
   @staticmethod
   def rotate(vector: Vector, degrees: int) -> Vector:
     radians = degrees * math.pi / 180
 
-    result = vector * Matrix([
+    result = Matrix([
       [math.cos(radians), -math.sin(radians)], 
       [math.sin(radians), math.cos(radians)]
-    ])
+    ]) * vector
 
     return result
   
@@ -85,8 +85,8 @@ class LinearTransformations:
       case Axis.xy:
         elementary_matrix = Matrix([[1, shear], [shear, 1]])
 
-    return vector * elementary_matrix
+    return elementary_matrix * vector
   
   @staticmethod
   def custom(vector: Vector, matrix: Matrix) -> Vector:
-    return vector * matrix
+    return matrix * vector
