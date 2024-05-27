@@ -1,22 +1,21 @@
 import cv2
-import numpy as np
+import matplotlib.pyplot as plt
+from Visualization import Visualization as V
 
 img = cv2.imread('./img/2.jpg')
 
-h, w, _ = img.shape
+height, width, _ = img.shape
 
-cv2.imshow('Original image', img)
+matrix = cv2.getRotationMatrix2D((width/2, height/2), 225, 1)
+rotated = cv2.warpAffine(img, matrix, (width, height))
 
-m = cv2.getRotationMatrix2D((w/2, h/2), 225, 1)
-result = cv2.warpAffine(img, m, (w, h))
+matrix = cv2.getRotationMatrix2D((0, 0), 0, 2)
+scaled = cv2.warpAffine(img, matrix, (width, height))
 
-cv2.imshow('Rotated 225 deg', result)
+mirrored = cv2.flip(img, 0)
 
-m = cv2.getRotationMatrix2D((w/2, h/2), 0, 2)
-result = cv2.warpAffine(img, m, (w, h))
+pictures = [img, rotated, scaled, mirrored]
 
-cv2.imshow('Scaled x2', result)
+V.add_pictures(2, 2, pictures, ['Original', 'Rotated', 'Scaled', 'Mirrored by OX'])
 
-flipped = cv2.flip(img, 0)
-cv2.imshow('Mirrored OX axis', flipped)
-cv2.waitKey(0)
+plt.show()

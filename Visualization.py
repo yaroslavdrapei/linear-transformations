@@ -1,6 +1,6 @@
 from Vector import *
 import matplotlib.pyplot as plt
-import numpy as np
+import cv2
 
 class Visualization:
   colors = ['k', 'r', 'c', 'y', 'b', 'm', 'g']
@@ -63,3 +63,14 @@ class Visualization:
       Visualization.draw_plot3d([initial_vector, vector], size, ax, True)
 
     plt.show()
+  
+  def add_pictures(rows: int, cols: int, images, titles=None):
+    fig = plt.figure()
+
+    for index, image in enumerate(images):
+      ax = fig.add_subplot(rows, cols, index+1)
+
+      ax.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+      if titles:
+        ax.set_title(titles[index])
+      ax.axis('off')
