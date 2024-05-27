@@ -79,9 +79,9 @@ class LinearTransformations:
     elementary_matrix = None
     match (axis):
       case Axis.x:
-        elementary_matrix = Matrix([[1, 0], [shear, 1]])
-      case Axis.y:
         elementary_matrix = Matrix([[1, shear], [0, 1]])
+      case Axis.y:
+        elementary_matrix = Matrix([[1, 0], [shear, 1]])
       case Axis.xy:
         elementary_matrix = Matrix([[1, shear], [shear, 1]])
 
